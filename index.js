@@ -7,13 +7,15 @@ const tabButtons = document.querySelectorAll(".tab-btn")
 function openTab(evt, tabName){
 
     tabs.forEach((tab) => {
-        tab.style.display = 'none'
+        tab.classList.add("tw-hidden")
+        tab.style.display = '' // Clean up any previous inline styles
     })
 
     tabButtons.forEach((btn) => btn.classList.remove("tab-active"))
 
-    document.querySelector(`[data-tab-name=${tabName}]`).style.display = 'block'
-
+    const activeTab = document.querySelector(`[data-tab-name=${tabName}]`)
+    activeTab.classList.remove("tw-hidden")
+    
     evt.target.classList.add("tab-active") // set current button to be active
 
 }
